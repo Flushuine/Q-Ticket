@@ -2,7 +2,7 @@
 
 ONLY FOR EDUCATIONAL PURPOSES.
 
-This is not a serious project. This project was made only to fulfil my college assignments.
+This is not a serious project. This project was made only to fulfil my college assignments and still under development.
 
 Feel free to contribute to my project.
 

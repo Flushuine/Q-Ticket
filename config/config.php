@@ -59,3 +59,52 @@ function login($email)
 
     return $result;
 }
+
+function listFilm()
+{
+    global $conn;
+
+    $sql = "SELECT * FROM films WHERE shows = 'Now Showing'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+}
+
+function detailFilm($filmID)
+{
+    global $conn;
+
+    $sql = "SELECT * FROM films WHERE filmID = :filmID LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(array(":filmID" => $filmID));
+    $result = $stmt->fetch();
+
+    return $result;
+}
+
+function selectCinema($filmID)
+{
+    global $conn;
+
+    $sql = "SELECT cinemas.cinema_name, cinemas.address, showtime.showtime, studio.price
+            FROM studio INNER JOIN cinemas ON studio.cinemaID = cinemas.cinemaID
+            INNER JOIN showtime ON studio.showtimeID = showtime.showtimeID
+            WHERE studio.filmID = :filmID";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(array(":filmID" => $filmID));
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+function cinema()
+{
+    global $conn;
+
+    $sql = "SELECT * FROM cinemas";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+}

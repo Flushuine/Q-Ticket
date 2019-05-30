@@ -15,5 +15,6 @@ define("TITLE", "Q-Ticket, Indonesia's No. 1 Cinema");
 
 <!-- Custom CSS -->
 <link rel='stylesheet' type='text/css' href='css/header.css'>
+<link rel='stylesheet' type='text/css' href='css/content.css'>
 
 <title><?php echo TITLE; ?></title>
